@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Naishidha, Be My Valentine 💖</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      max-width: 420px;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #e63946;
+      font-size: 2.3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    button {
+      font-size: 1em;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    .yes {
+      background: #e63946;
+      color: white;
+    }
+
+    .no {
+      background: #ccc;
+      color: #333;
+      position: absolute;
+    }
+
+    .music-btn {
+      background: #ffb703;
+      color: #333;
+      font-size: 0.9em;
+      margin-top: 15px;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #e63946;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) scale(1);
+      }
+      to {
+        transform: translateY(-10vh) scale(1.5);
+      }
+    }
+	/* Final cinematic screen */
+.title-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: screenFade 2s ease forwards;
+}
+
+/* Film title text */
+.film-title {
+  color: #d4af37; /* classic gold */
+  font-family: "Georgia", serif;
+  font-size: 3.5em;
+  letter-spacing: 4px;
+  opacity: 0;
+  animation: titleReveal 3s ease forwards;
+  animation-delay: 2s;
+}
+
+/* Screen fade */
+@keyframes screenFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Title reveal */
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <!-- Romantic instrumental music -->
+    <source src="C:\Users\nagen\Downloads\thalapathy_theme.mp3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Naishidha 💕</h1>
+    <p>
+      You are my favorite person, my best friend,
+      and the love of my life.
+      <br><br>
+      Will you be my Valentine? 🌹
+    </p>
+
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" onmouseover="moveNo()">No 🙈</button>
+
+    <br>
+    <button class="music-btn" onclick="playMusic()">▶ Play Music</button>
+  </div>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+
+    function playMusic() {
+      music.play();
+    }
+
+    function sayYes() {
+      music.play();
+      document.body.innerHTML = `
+        <div style="
+          display:flex;
+          height:100vh;
+          align-items:center;
+          justify-content:center;
+          background:#ffe6eb;
+          font-family:'Segoe UI', sans-serif;
+          text-align:center;
+        ">
+          <div>
+            <h1 style="color:#e63946;">Yay!!! 💕🥰</h1>
+            <p style="font-size:1.2em;">
+              Naishidha, you make my world beautiful.<br>
+              I love you endlessly ❤️<br><br>
+              Happy Valentine’s Day 💖
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
+    function moveNo() {
+      const button = document.querySelector('.no');
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      button.style.left = x + 'px';
+      button.style.top = y + 'px';
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }, 500);
+  </script>
+
+</body>
+</html>
